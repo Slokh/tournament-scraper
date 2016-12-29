@@ -1,5 +1,4 @@
 from challonge import challonge
-from smash import smash
 
 link = raw_input("Enter the bracket link: ")
 link = link.strip()
@@ -7,8 +6,11 @@ link = link.strip()
 size = raw_input("Enter the bracket type (16SE, 32SE, 64SE): ")
 size = int(size[:2])
 
-if size != 16 or size != 32 or size != 64:
-	print("\nERROR: Incorrect bracket type")
+if size == 16 or size == 32 or size == 64:
+	try:
+		print(challonge(link, size))
+	except:
+		print("Invalid link")
 else:
-	print(challonge(link, size))
+	print("\nERROR: Incorrect bracket type")
 
