@@ -1,2 +1,3 @@
 # tournament-scraper
-Scrapes tournament hosting sites into EsportsWikis bracket template
+Tournament Scraper for EsportsWikis 
+by Slokh with help from Jasher
