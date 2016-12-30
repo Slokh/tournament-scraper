@@ -5,7 +5,6 @@ from bracket import generate16SEBracket
 from bracket import generate32SEBracket
 from bracket import generate64SEBracket
 
-
 def challonge(link, size):
 
     results = urllib.urlopen(link).read()
@@ -31,6 +30,9 @@ def challonge(link, size):
         score1.append(scoreTop)
         score2.append(scoreBottom)
 
+    if len(team1) < size - 1:
+        return "ERROR: Retry with a smaller bracket size"
+		
     team1 = team1[:(size-1)][::-1]
     team2 = team2[:(size-1)][::-1]
     score1 = score1[:(size-1)][::-1]

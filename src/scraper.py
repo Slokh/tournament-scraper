@@ -30,10 +30,7 @@ def challongeBracket():
 
 def smashBracket():
 	if size == 16 or size == 32 or size == 64:
-		try:
-			print(smash(link, size))
-		except:
-			print("ERROR: Invalid link")
+		print(smash(link, size))
 	else:
 		print("\nERROR: Incorrect bracket type")
 

@@ -44,6 +44,9 @@ def battlefy(link, size):
         score2.append(scoreBottom)
 
 		
+    if len(team1) < size - 1:
+        return "ERROR: Retry with a smaller bracket size"
+		
     bracketSize = len(team1) + 1
     n = int(math.log(bracketSize, 2))
     finalteam1 = []
