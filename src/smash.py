@@ -1,4 +1,5 @@
 import urllib
+
 from bs4 import BeautifulSoup
 
 from bracket import generate16SEBracket
@@ -22,8 +23,16 @@ def smash(link, size):
         nameBottom = names[1].contents[0]
 
         scores = match.findAll('div', class_='match-player-stocks')
-        scoreTop = scores[0].contents[0]
-        scoreBottom = scores[1].contents[0]
+        if len(scores) == 0:
+            if match.find('div', class_='match-section-top').find('div', class_='dq'):
+                scoreTop = "DQ"
+                scoreBottom = "W"  
+            if match.find('div', class_='match-section-bottom').find('div', class_='dq'):
+                scoreTop = "W"  
+                scoreBottom = "DQ"
+        else:
+            scoreTop = scores[0].contents[0]
+            scoreBottom = scores[1].contents[0]
 
         team1.append(nameTop)
         team2.append(nameBottom)
@@ -37,8 +46,6 @@ def smash(link, size):
     team2 = team2[::-1][:(size-1)][::-1]
     score1 = score1[::-1][:(size-1)][::-1]
     score2 = score2[::-1][:(size-1)][::-1]
-    for x in range(0, len(team1)):
-        print("{0} vs {1}".format(team1[x], team2[x]))
     
     if size == 64:
         return generate64SEBracket(team1, team2, score1, score2)

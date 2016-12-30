@@ -3,6 +3,7 @@ import codecs
 import sys
 import math
 import time
+
 from selenium import webdriver
 from bs4 import BeautifulSoup
 

@@ -1,4 +1,5 @@
 import urllib
+
 from bs4 import BeautifulSoup
 
 from bracket import generate16SEBracket

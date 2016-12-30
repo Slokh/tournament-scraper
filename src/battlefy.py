@@ -1,6 +1,7 @@
 import sys
 import math
 import time
+
 from selenium import webdriver
 from bs4 import BeautifulSoup
 
@@ -13,7 +14,7 @@ def battlefy(link, size):
     driver = webdriver.Chrome("{0}/driver/chromedriver.exe".format(sys.path[0]))
     driver.get(link)
 	
-    print("Waiting for page to load...")
+    print("Collecting data from page...")
     time.sleep(5)
     results = driver.page_source
     driver.quit()

@@ -1,3 +1,6 @@
+import os
+import sys
+
 from battlefy import battlefy
 from challonge import challonge
 from gfinity import gfinity
@@ -5,14 +8,17 @@ from smash import smash
 
 def battlefyBracket():
 	if size == 16 or size == 32 or size == 64:
-		print(battlefy(link, size))
+		try:
+		    printToFile(battlefy(link, size))
+		except:
+			print("ERROR: Invalid link")
 	else:
 		print("\nERROR: Incorrect bracket type")
 
 def challongeBracket():
 	if size == 16 or size == 32 or size == 64:
 		try:
-			print(challonge(link, size))
+			printToFile(challonge(link, size))
 		except:
 			print("ERROR: Invalid link")
 	else:
@@ -20,18 +26,27 @@ def challongeBracket():
 
 def gfinityBracket():
 	if size == 16 or size == 32 or size == 64:
-		print(gfinity(link, size))
+		try:
+		    printToFile(gfinity(link, size))
+		except:
+			print("ERROR: Invalid link")
 	else:
 		print("\nERROR: Incorrect bracket type")
 
 def smashBracket():
 	if size == 16 or size == 32 or size == 64:
 		try:
-			print(smash(link, size))
+		    printToFile(smash(link, size))
 		except:
 			print("ERROR: Invalid link")
 	else:
 		print("\nERROR: Incorrect bracket type")
+		
+def printToFile(result):
+    dir = os.path.dirname(os.path.realpath(__file__))
+    file = open(dir+"/../data/bracket.txt", "w")
+    file.write(result)
+    file.close()
 
 host = raw_input("Enter the host ([b]attlefy, [c]hallonge, [g]finity, [s]mash.gg): ")
 

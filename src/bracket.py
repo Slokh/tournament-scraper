@@ -12,12 +12,20 @@ def formatResult(identifier, start, end):
     for x in range(start,end):
         y = 2*(x-start)+1
         if team1[x] != "BYE" and team2[x] != "BYE":
-            if score1[x] == score2[x]:
+            if score1[x] == "W":
+                team1[x] = "'''{{{{teamShort|{0}}}}}'''".format(team1[x])
+                team2[x] = "{{{{teamShort|{0}}}}}".format(team2[x])
+                score1[x] = "'''W'''"
+            elif score2[x] == "W":
+                team1[x] = "{{{{teamShort|{0}}}}}".format(team1[x])
+                team2[x] = "'''{{{{teamShort|{0}}}}}'''".format(team2[x])
+                score2[x] = "'''W'''"
+            elif score1[x] == score2[x]:
                 team1[x] = "{{{{teamShort|{0}}}}}".format(team1[x])
                 team2[x] = "{{{{teamShort|{0}}}}}".format(team2[x])
                 score1[x] = ""
                 score2[x] = ""
-            if score1[x] > score2[x]:
+            elif score1[x] > score2[x]:
                 team1[x] = "'''{{{{teamShort|{0}}}}}'''".format(team1[x])
                 team2[x] = "{{{{teamShort|{0}}}}}".format(team2[x])
                 score1[x] = "'''{0}'''".format(score1[x])
