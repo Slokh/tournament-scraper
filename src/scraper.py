@@ -11,7 +11,7 @@ def battlefyBracket():
 		try:
 		    printToFile(battlefy(link, size))
 		except:
-			print("ERROR: Invalid link")
+			print("\nERROR: Invalid link")
 	else:
 		print("\nERROR: Incorrect bracket type")
 
@@ -20,7 +20,7 @@ def challongeBracket():
 		try:
 			printToFile(challonge(link, size))
 		except:
-			print("ERROR: Invalid link")
+			print("\nERROR: Invalid link")
 	else:
 		print("\nERROR: Incorrect bracket type")
 
@@ -29,7 +29,7 @@ def gfinityBracket():
 		try:
 		    printToFile(gfinity(link, size))
 		except:
-			print("ERROR: Invalid link")
+			print("\nERROR: Invalid link")
 	else:
 		print("\nERROR: Incorrect bracket type")
 
@@ -38,7 +38,7 @@ def smashBracket():
 		try:
 		    printToFile(smash(link, size))
 		except:
-			print("ERROR: Invalid link")
+			print("\nERROR: Invalid link")
 	else:
 		print("\nERROR: Incorrect bracket type")
 		
