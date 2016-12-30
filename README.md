@@ -1,7 +1,8 @@
-# tournament-scraper
-Tournament Scraper for EsportsWikis 
+# Tournament Scraper for EsportsWikis 
 
 Created by Slokh and Jasher
+
+### Installation
 
 Use latest version of Python 2.7.x
 
