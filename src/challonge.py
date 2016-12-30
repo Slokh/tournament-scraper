@@ -44,22 +44,39 @@ def challonge(link, size):
     elif size == 16:
         generate16SEBracket()
 
-    print(result)
+    return result
 
 def formatResult(identifier, start, end):
     global result
     for x in range(start,end):
         y = 2*(x-start)+1
-        result += "|R{0}{1}={{{{teamShort|{2}}}}} |R{3}{4}score={5}\n".format(identifier, y, team1[x], identifier, y, score1[x])
-        y = y + 1
-        result += "|R{0}{1}={{{{teamShort|{2}}}}} |R{3}{4}score={5}\n".format(identifier, y, team2[x], identifier, y, score2[x])
+        if team1[x] != "BYE" and team2[x] != "BYE":
+            if score1[x] > score2[x]:
+                team1[x] = "'''{{{{teamShort|{0}}}}}'''".format(team1[x])
+                team2[x] = "{{{{teamShort|{0}}}}}".format(team2[x])
+                score1[x] = "'''{0}'''".format(score1[x])
+            else:
+                team1[x] = "{{{{teamShort|{0}}}}}".format(team1[x])
+                team2[x] = "'''{{{{teamShort|{0}}}}}'''".format(team2[x])
+                score2[x] = "'''{0}'''".format(score2[x])
+            result += "|R{0}{1}={2} |R{3}{4}score={5}\n".format(identifier, y, team1[x], identifier, y, score1[x])
+            y = y + 1
+            result += "|R{0}{1}={2} |R{3}{4}score={5}\n".format(identifier, y, team2[x], identifier, y, score2[x])
+        elif team1[x] == "BYE" and team2[x] != "BYE":
+            result += "|R{0}{1}={2} |R{3}{4}score={5}\n".format(identifier, y, "BYE", identifier, y, "-")
+            y = y + 1
+            result += "|R{0}{1}='''{{{{teamShort|{2}}}}}''' |R{3}{4}score={5}\n".format(identifier, y, team2[x], identifier, y, "'''W'''")
+        elif team1[x] != "BYE" and team2[x] == "BYE":
+            result += "|R{0}{1}='''{{{{teamShort|{2}}}}}''' |R{3}{4}score={5}\n".format(identifier, y, team1[x], identifier, y, "'''W'''")
+            y = y + 1
+            result += "|R{0}{1}={2} |R{3}{4}score={5}\n".format(identifier, y, "BYE", identifier, y, "-")
 
 def generate64SEBracket():
     global result
     result += "{{64SEBracket\n"
     result += " <!-- ROUND OF 64 (Ro64) -->\n"
     formatResult("1D", 0, 32)
-    result += " <!-- ROUND OF 32 (Ro32) -->\n"
+    result += "\n <!-- ROUND OF 32 (Ro32) -->\n"
     formatResult("2W", 32, 48)
     result += "\n <!-- ROUND OF 16 (Ro16) -->\n"
     formatResult("3W", 48, 56)
