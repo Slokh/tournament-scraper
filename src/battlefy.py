@@ -1,4 +1,3 @@
-import urllib
 import sys
 import math
 import time

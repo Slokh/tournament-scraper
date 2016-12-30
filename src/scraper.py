@@ -1,8 +1,7 @@
 from battlefy import battlefy
 from challonge import challonge
+from gfinity import gfinity
 from smash import smash
-from selenium import webdriver
-import sys
 
 def battlefyBracket():
 	if size == 16 or size == 32 or size == 64:
@@ -19,18 +18,18 @@ def challongeBracket():
 	else:
 		print("\nERROR: Incorrect bracket type")
 
-#def gfinityBracket():
-#	if size == 16 or size == 32 or size == 64:
-#		try:
-#			print(gfinity(link, size))
-#		except:
-#			print("ERROR: Invalid link")
-#	else:
-#		print("\nERROR: Incorrect bracket type")
+def gfinityBracket():
+	if size == 16 or size == 32 or size == 64:
+		print(gfinity(link, size))
+	else:
+		print("\nERROR: Incorrect bracket type")
 
 def smashBracket():
 	if size == 16 or size == 32 or size == 64:
-		print(smash(link, size))
+		try:
+			print(smash(link, size))
+		except:
+			print("ERROR: Invalid link")
 	else:
 		print("\nERROR: Incorrect bracket type")
 
